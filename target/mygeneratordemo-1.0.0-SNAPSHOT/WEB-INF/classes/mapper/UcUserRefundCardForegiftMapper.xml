@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.v2.mapper.UcUserRefundCardForegiftMapper">
+  <resultMap id="BaseResultMap" type="com.qf.v2.entity.UcUserRefundCardForegift">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="universal_card_id" jdbcType="BIGINT" property="universalCardId" />
+    <result column="acount_id" jdbcType="VARCHAR" property="acountId" />
+    <result column="refund_order_id" jdbcType="BIGINT" property="refundOrderId" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="pay_amount" jdbcType="DECIMAL" property="payAmount" />
+    <result column="refund_amount" jdbcType="DECIMAL" property="refundAmount" />
+    <result column="refund_status" jdbcType="TINYINT" property="refundStatus" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="creater_id" jdbcType="VARCHAR" property="createrId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, universal_card_id, acount_id, refund_order_id, amount, pay_amount, refund_amount, 
+    refund_status, created_at, creater_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from uc_user_refund_card_foregift
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from uc_user_refund_card_foregift
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qf.v2.entity.UcUserRefundCardForegift">
+    insert into uc_user_refund_card_foregift (id, universal_card_id, acount_id, 
+      refund_order_id, amount, pay_amount, 
+      refund_amount, refund_status, created_at, 
+      creater_id)
+    values (#{id,jdbcType=BIGINT}, #{universalCardId,jdbcType=BIGINT}, #{acountId,jdbcType=VARCHAR}, 
+      #{refundOrderId,jdbcType=BIGINT}, #{amount,jdbcType=DECIMAL}, #{payAmount,jdbcType=DECIMAL}, 
+      #{refundAmount,jdbcType=DECIMAL}, #{refundStatus,jdbcType=TINYINT}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{createrId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qf.v2.entity.UcUserRefundCardForegift">
+    insert into uc_user_refund_card_foregift
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="universalCardId != null">
+        universal_card_id,
+      </if>
+      <if test="acountId != null">
+        acount_id,
+      </if>
+      <if test="refundOrderId != null">
+        refund_order_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="payAmount != null">
+        pay_amount,
+      </if>
+      <if test="refundAmount != null">
+        refund_amount,
+      </if>
+      <if test="refundStatus != null">
+        refund_status,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="createrId != null">
+        creater_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="universalCardId != null">
+        #{universalCardId,jdbcType=BIGINT},
+      </if>
+      <if test="acountId != null">
+        #{acountId,jdbcType=VARCHAR},
+      </if>
+      <if test="refundOrderId != null">
+        #{refundOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payAmount != null">
+        #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="refundAmount != null">
+        #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="refundStatus != null">
+        #{refundStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        #{createrId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.v2.entity.UcUserRefundCardForegift">
+    update uc_user_refund_card_foregift
+    <set>
+      <if test="universalCardId != null">
+        universal_card_id = #{universalCardId,jdbcType=BIGINT},
+      </if>
+      <if test="acountId != null">
+        acount_id = #{acountId,jdbcType=VARCHAR},
+      </if>
+      <if test="refundOrderId != null">
+        refund_order_id = #{refundOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payAmount != null">
+        pay_amount = #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="refundAmount != null">
+        refund_amount = #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="refundStatus != null">
+        refund_status = #{refundStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        creater_id = #{createrId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.v2.entity.UcUserRefundCardForegift">
+    update uc_user_refund_card_foregift
+    set universal_card_id = #{universalCardId,jdbcType=BIGINT},
+      acount_id = #{acountId,jdbcType=VARCHAR},
+      refund_order_id = #{refundOrderId,jdbcType=BIGINT},
+      amount = #{amount,jdbcType=DECIMAL},
+      pay_amount = #{payAmount,jdbcType=DECIMAL},
+      refund_amount = #{refundAmount,jdbcType=DECIMAL},
+      refund_status = #{refundStatus,jdbcType=TINYINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      creater_id = #{createrId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

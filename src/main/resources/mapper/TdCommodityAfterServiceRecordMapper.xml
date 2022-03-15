@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.test.mapper.TdCommodityAfterServiceRecordMapper">
+  <resultMap id="BaseResultMap" type="com.yj.test.entity.TdCommodityAfterServiceRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="us_name" jdbcType="VARCHAR" property="usName" />
+    <result column="us_phone_no" jdbcType="VARCHAR" property="usPhoneNo" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="commodity_count" jdbcType="BIGINT" property="commodityCount" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="check_content" jdbcType="VARCHAR" property="checkContent" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="checked_at" jdbcType="TIMESTAMP" property="checkedAt" />
+    <result column="store_login_id" jdbcType="BIGINT" property="storeLoginId" />
+    <result column="store_login_name" jdbcType="VARCHAR" property="storeLoginName" />
+    <result column="area_id" jdbcType="BIGINT" property="areaId" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="agent_id" jdbcType="BIGINT" property="agentId" />
+    <result column="agent_name" jdbcType="VARCHAR" property="agentName" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="store_name" jdbcType="VARCHAR" property="storeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, us_name, us_phone_no, reason, commodity_count, status, check_content, 
+    created_at, updated_at, checked_at, store_login_id, store_login_name, area_id, area_name, 
+    agent_id, agent_name, store_id, store_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_commodity_after_service_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from td_commodity_after_service_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yj.test.entity.TdCommodityAfterServiceRecord">
+    insert into td_commodity_after_service_record (id, order_no, us_name, 
+      us_phone_no, reason, commodity_count, 
+      status, check_content, created_at, 
+      updated_at, checked_at, store_login_id, 
+      store_login_name, area_id, area_name, 
+      agent_id, agent_name, store_id, 
+      store_name)
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{usName,jdbcType=VARCHAR}, 
+      #{usPhoneNo,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR}, #{commodityCount,jdbcType=BIGINT}, 
+      #{status,jdbcType=TINYINT}, #{checkContent,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{checkedAt,jdbcType=TIMESTAMP}, #{storeLoginId,jdbcType=BIGINT}, 
+      #{storeLoginName,jdbcType=VARCHAR}, #{areaId,jdbcType=BIGINT}, #{areaName,jdbcType=VARCHAR}, 
+      #{agentId,jdbcType=BIGINT}, #{agentName,jdbcType=VARCHAR}, #{storeId,jdbcType=BIGINT}, 
+      #{storeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yj.test.entity.TdCommodityAfterServiceRecord">
+    insert into td_commodity_after_service_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="usName != null">
+        us_name,
+      </if>
+      <if test="usPhoneNo != null">
+        us_phone_no,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="commodityCount != null">
+        commodity_count,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="checkContent != null">
+        check_content,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="checkedAt != null">
+        checked_at,
+      </if>
+      <if test="storeLoginId != null">
+        store_login_id,
+      </if>
+      <if test="storeLoginName != null">
+        store_login_name,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="areaName != null">
+        area_name,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+      <if test="agentName != null">
+        agent_name,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="storeName != null">
+        store_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="usName != null">
+        #{usName,jdbcType=VARCHAR},
+      </if>
+      <if test="usPhoneNo != null">
+        #{usPhoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityCount != null">
+        #{commodityCount,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="checkContent != null">
+        #{checkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkedAt != null">
+        #{checkedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeLoginId != null">
+        #{storeLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="storeLoginName != null">
+        #{storeLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=BIGINT},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=BIGINT},
+      </if>
+      <if test="agentName != null">
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="storeName != null">
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yj.test.entity.TdCommodityAfterServiceRecord">
+    update td_commodity_after_service_record
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="usName != null">
+        us_name = #{usName,jdbcType=VARCHAR},
+      </if>
+      <if test="usPhoneNo != null">
+        us_phone_no = #{usPhoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityCount != null">
+        commodity_count = #{commodityCount,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="checkContent != null">
+        check_content = #{checkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkedAt != null">
+        checked_at = #{checkedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeLoginId != null">
+        store_login_id = #{storeLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="storeLoginName != null">
+        store_login_name = #{storeLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=BIGINT},
+      </if>
+      <if test="areaName != null">
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        agent_id = #{agentId,jdbcType=BIGINT},
+      </if>
+      <if test="agentName != null">
+        agent_name = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="storeName != null">
+        store_name = #{storeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yj.test.entity.TdCommodityAfterServiceRecord">
+    update td_commodity_after_service_record
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      us_name = #{usName,jdbcType=VARCHAR},
+      us_phone_no = #{usPhoneNo,jdbcType=VARCHAR},
+      reason = #{reason,jdbcType=VARCHAR},
+      commodity_count = #{commodityCount,jdbcType=BIGINT},
+      status = #{status,jdbcType=TINYINT},
+      check_content = #{checkContent,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      checked_at = #{checkedAt,jdbcType=TIMESTAMP},
+      store_login_id = #{storeLoginId,jdbcType=BIGINT},
+      store_login_name = #{storeLoginName,jdbcType=VARCHAR},
+      area_id = #{areaId,jdbcType=BIGINT},
+      area_name = #{areaName,jdbcType=VARCHAR},
+      agent_id = #{agentId,jdbcType=BIGINT},
+      agent_name = #{agentName,jdbcType=VARCHAR},
+      store_id = #{storeId,jdbcType=BIGINT},
+      store_name = #{storeName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
